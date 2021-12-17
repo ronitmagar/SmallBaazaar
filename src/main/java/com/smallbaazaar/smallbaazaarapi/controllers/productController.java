@@ -23,15 +23,20 @@ public class productController {
     @GetMapping("/products")
     public String getAllProducts(Model model)
     {
-        List<products> ref = service.getAll();
+        // code for getting all the products
+        //System.out.println("Val from get all products :"+name);
+        ArrayList<products> ref = service.getAll();
         model.addAttribute("data",ref);
         return "/all.html";
     }
+    /*@PostMapping("/products")
+    public */
 
-    @GetMapping("/products/{name}")
+    @GetMapping("/products/name/{name}")
     //@ResponseBody
-    public String getByName(@PathVariable("name") String name, Model model) throws IOException {
+    public String getByBrand(@PathVariable String name, Model model) {
         //globalname = name;
+        System.out.println("Val from get by brand :"+name);
         ArrayList<Object> ref = service.getByName(name);
         //ModelAndView m = new ModelAndView("category");
         //m.addObject("data",ref);

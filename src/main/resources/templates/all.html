@@ -5,9 +5,9 @@
     <title>All Products</title>
 </head>
 <body>
-    <form action="/products/" method="get">
+    <form action="/products/name/" method="get">
         <select name="val">
-            <option th:each="obj:${data}" th:text="${obj}"></option>
+            <option th:each="obj:${data}" th:text="${obj.name}"></option>
         </select>
     <input type="submit" value="Submit">
 </form>
