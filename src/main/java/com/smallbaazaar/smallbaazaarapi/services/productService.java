@@ -19,11 +19,17 @@ public class productService {
         return repo.findByName(name);
     }
 
-    public ArrayList<Object> getByPrice(String brand,String name) {
-        return repo.findByPrice(brand,name);
-    }
+
 
     public List<products> getAll() {
-        return repo.find();
+        return repo.findAll();
     }
+
+    /*public ArrayList<Object> getByPrice(String brand,String name) {
+        return repo.findByPrice(brand,name);
+    }*/
+
+    /*public List<products> getAll() {
+        return repo.find();
+    }*/
 }

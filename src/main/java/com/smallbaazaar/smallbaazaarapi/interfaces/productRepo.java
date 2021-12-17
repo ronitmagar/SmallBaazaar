@@ -14,9 +14,15 @@ public interface productRepo extends JpaRepository<products,Integer> {
     @Query(value="select brand_name from products where prod_name=?",nativeQuery = true)
     public ArrayList<Object> findByName(String name);
 
-    @Query(value="select * from products where brand_name=? and prod_name=?",nativeQuery = true)
-    public ArrayList<Object> findByPrice(String brand,String name);
+    @Query(value = "select distinct prod_name from products",nativeQuery = true)
+    List<products> findbyOb();
 
-    @Query(value = "select distinct prod_name from products")
-    List<products> find();
+    @Query(value = "select distinct prod_name from products",nativeQuery = true)
+    List<products> findAll();
+
+   /* @Query(value="select * from products where brand_name=? and prod_name=?",nativeQuery = true)
+    public ArrayList<Object> findByPrice(String brand,String name);*/
+
+    /*@Query(value = "select distinct prod_name from products")
+    List<products> find();*/
 }

@@ -15,13 +15,13 @@ import java.util.List;
 @Controller
 public class productController {
 
-    String globalname = "";
+    //String globalname = "";
 
     @Autowired
     productService service;
 
     @GetMapping("/products")
-    public String getOb(Model model)
+    public String getAllProducts(Model model)
     {
         List<products> ref = service.getAll();
         model.addAttribute("data",ref);
@@ -30,8 +30,8 @@ public class productController {
 
     @GetMapping("/products/{name}")
     //@ResponseBody
-    public String getByName(@PathVariable("name") String name, Model model, HttpServletResponse response) throws IOException {
-        globalname = name;
+    public String getByName(@PathVariable("name") String name, Model model) throws IOException {
+        //globalname = name;
         ArrayList<Object> ref = service.getByName(name);
         //ModelAndView m = new ModelAndView("category");
         //m.addObject("data",ref);
@@ -40,7 +40,7 @@ public class productController {
         //return m;
         return "/category.html";
     }
-    @GetMapping("/products/price")
+    /*@GetMapping("/products/price")
     public String getByBrand(@RequestParam(name="val") String brand,Model model){
         ArrayList<Object> ref = service.getByPrice(brand,globalname);
         System.out.println("Global name: "+globalname);
@@ -48,5 +48,5 @@ public class productController {
         //System.out.println(brand);
         //return "brand : "+ brand;
         return "/next.html";
-    }
+    }*/
 }
