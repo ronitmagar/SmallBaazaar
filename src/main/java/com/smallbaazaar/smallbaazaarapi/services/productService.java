@@ -14,22 +14,18 @@ public class productService {
     @Autowired
     productRepo repo;
 
-    public ArrayList<Object> getByName(String name)
-    {
+
+    public ArrayList<Object> getByName(String name) {
         return repo.findByName(name);
     }
 
-
-
-    public List<products> getAll() {
-        return repo.findAll();
+    public ArrayList<products> getAll() {
+        return (ArrayList<products>) repo.findAll();
     }
 
-    /*public ArrayList<Object> getByPrice(String brand,String name) {
-        return repo.findByPrice(brand,name);
-    }*/
 
-    /*public List<products> getAll() {
-        return repo.find();
+
+    /*public ArrayList<products> getByName() {
+        return repo.findByName();
     }*/
 }
