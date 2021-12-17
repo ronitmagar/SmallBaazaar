@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <form action="/someService" method="post">
+        <select th:field="${data}">
+            <option th:each="obj:${data}" th:text="${obj}" th:value="${obj}"></option>
+        </select>
+    </form>
+</body>
+</html>
