@@ -5,7 +5,9 @@
     <title>All Products</title>
 </head>
 <body>
-    <form action="/products/name/" method="get">
+<!-- th:action="@{/products/name}" th:object="${all}" method="post"
+@{/product/{name}(name=${obj.name})}-->
+    <form action="/products/val" method="get" >
         <select name="val">
             <option th:each="obj:${data}" th:text="${obj.name}"></option>
         </select>
