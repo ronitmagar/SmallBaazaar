@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class productController {
 
-    //String globalname = "";
+    String globalname = "";
 
     @Autowired
     productService service;
@@ -29,29 +29,34 @@ public class productController {
         model.addAttribute("data",ref);
         return "/all.html";
     }
-    /*@PostMapping("/products")
-    public */
+    /*@PostMapping("/")
+    public String sendAllProducts(@ModelAttribute products all,Model model)
+    {
+        System.out.println(all);
+        return "all";
+    }*/
 
-    @GetMapping("/products/name/{name}")
+    @GetMapping("/products/{name}")
     //@ResponseBody
-    public String getByBrand(@PathVariable String name, Model model) {
+    public String getByBrand(@RequestParam("val") String name, Model model) {
         //globalname = name;
         System.out.println("Val from get by brand :"+name);
         ArrayList<Object> ref = service.getByName(name);
         //ModelAndView m = new ModelAndView("category");
         //m.addObject("data",ref);
         model.addAttribute("data",ref);
+        globalname = name;
         //response.sendRedirect("category.html");
         //return m;
         return "/category.html";
     }
-    /*@GetMapping("/products/price")
-    public String getByBrand(@RequestParam(name="val") String brand,Model model){
-        ArrayList<Object> ref = service.getByPrice(brand,globalname);
+    @GetMapping("/products/name/{val}")
+    public String getByPrice(@RequestParam(name="val") String brand,Model model){
+        ArrayList<products> ref = service.getByPrice(brand,globalname);
         System.out.println("Global name: "+globalname);
         model.addAttribute("data",ref);
         //System.out.println(brand);
         //return "brand : "+ brand;
         return "/next.html";
-    }*/
+    }
 }

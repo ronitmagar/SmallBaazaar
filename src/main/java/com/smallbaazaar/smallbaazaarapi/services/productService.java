@@ -23,6 +23,10 @@ public class productService {
         return (ArrayList<products>) repo.findAll();
     }
 
+    public ArrayList<products> getByPrice(String brand, String globalname) {
+        return repo.findByPrice(brand,globalname);
+    }
+
 
 
     /*public ArrayList<products> getByName() {
