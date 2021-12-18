@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class productService {
@@ -13,8 +14,18 @@ public class productService {
     @Autowired
     productRepo repo;
 
-    public ArrayList<Object> getByName(String name)
-    {
+
+    public ArrayList<Object> getByName(String name) {
         return repo.findByName(name);
     }
+
+    public ArrayList<products> getAll() {
+        return (ArrayList<products>) repo.findAll();
+    }
+
+
+
+    /*public ArrayList<products> getByName() {
+        return repo.findByName();
+    }*/
 }

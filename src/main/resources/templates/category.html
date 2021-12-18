@@ -5,10 +5,11 @@
     <title>Products</title>
 </head>
 <body>
-    <form action="/someService" method="post">
-        <select th:field="${data}">
-            <option th:each="obj:${data}" th:text="${obj}" th:value="${obj}"></option>
+    <form action="/product/price" method="get">
+        <select name="val">
+            <option th:each="obj:${data}" th:text="${obj}"></option>
         </select>
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>

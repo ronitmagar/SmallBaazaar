@@ -6,29 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class productController {
 
+    //String globalname = "";
+
     @Autowired
     productService service;
 
-    /*@GetMapping("/products/name/{name}")
-    public String getByName(@PathVariable String name, Model model)
+    @GetMapping("/products")
+    public String getAllProducts(Model model)
     {
-        ArrayList<Object> ref = service.getByName(name);
+        // code for getting all the products
+        //System.out.println("Val from get all products :"+name);
+        ArrayList<products> ref = service.getAll();
         model.addAttribute("data",ref);
-        return "/category.html";
-    }*/
+        return "/all.html";
+    }
+    /*@PostMapping("/products")
+    public */
 
-    @RequestMapping("/products/name/{name}")
+    @GetMapping("/products/name/{name}")
     //@ResponseBody
-    public String getByName(@PathVariable("name") String name, Model model, HttpServletResponse response) throws IOException {
+    public String getByBrand(@PathVariable String name, Model model) {
+        //globalname = name;
+        System.out.println("Val from get by brand :"+name);
         ArrayList<Object> ref = service.getByName(name);
         //ModelAndView m = new ModelAndView("category");
         //m.addObject("data",ref);
@@ -37,4 +45,13 @@ public class productController {
         //return m;
         return "/category.html";
     }
+    /*@GetMapping("/products/price")
+    public String getByBrand(@RequestParam(name="val") String brand,Model model){
+        ArrayList<Object> ref = service.getByPrice(brand,globalname);
+        System.out.println("Global name: "+globalname);
+        model.addAttribute("data",ref);
+        //System.out.println(brand);
+        //return "brand : "+ brand;
+        return "/next.html";
+    }*/
 }
